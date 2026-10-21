@@ -1,0 +1,6 @@
+{
+  "name": "Kontrol COGS & Purchasing Dashboard",
+  "description": "Multi-input dashboard entri report bulanan outlet, analisa kategori COGS & pembelian, dan log waste.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128;
+    }
+
+    match /monthly_reports/{reportId} {
+      allow read: if true;
+      allow create, update: if isValidId(reportId);
+      allow delete: if true;
+    }
+
+    match /category_analysis/{analysisId} {
+      allow read: if true;
+      allow create, update: if isValidId(analysisId);
+      allow delete: if true;
+    }
+
+    match /waste_logs/{wasteId} {
+      allow read: if true;
+      allow create, update: if isValidId(wasteId);
+      allow delete: if true;
+    }
+  }
+}

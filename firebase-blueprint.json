@@ -1,0 +1,107 @@
+{
+  "entities": {
+    "MonthlyReport": {
+      "title": "MonthlyReport",
+      "description": "Monthly COGS and purchasing report for an outlet",
+      "type": "object",
+      "properties": {
+        "periode": { "type": "string", "maxLength": 50 },
+        "outlet": { "type": "string", "maxLength": 100 },
+        "salesProfitFnB": { "type": "number" },
+        "totalSalesOutlet": { "type": "number" },
+        "pemakaianFnB": { "type": "number" },
+        "hppNonBahanBaku": { "type": "number" },
+        "totalHPP": { "type": "number" },
+        "pembelianBahanBaku": { "type": "number" },
+        "notes": { "type": "string", "maxLength": 500 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": [
+        "periode",
+        "outlet",
+        "salesProfitFnB",
+        "totalSalesOutlet",
+        "pemakaianFnB",
+        "hppNonBahanBaku",
+        "totalHPP",
+        "pembelianBahanBaku"
+      ]
+    },
+    "CategoryAnalysis": {
+      "title": "CategoryAnalysis",
+      "description": "Category-level COGS, purchasing, and waste analysis",
+      "type": "object",
+      "properties": {
+        "periode": { "type": "string", "maxLength": 50 },
+        "outlet": { "type": "string", "maxLength": 100 },
+        "kategori": { "type": "string", "maxLength": 100 },
+        "salesKategori": { "type": "number" },
+        "cogsPenggunaan": { "type": "number" },
+        "pembelian": { "type": "number" },
+        "waste": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": [
+        "periode",
+        "outlet",
+        "kategori",
+        "salesKategori",
+        "cogsPenggunaan",
+        "pembelian",
+        "waste"
+      ]
+    },
+    "WasteLog": {
+      "title": "WasteLog",
+      "description": "Daily raw material waste log from outlets",
+      "type": "object",
+      "properties": {
+        "tanggal": { "type": "string", "maxLength": 50 },
+        "periode": { "type": "string", "maxLength": 50 },
+        "outlet": { "type": "string", "maxLength": 100 },
+        "kategori": { "type": "string", "maxLength": 100 },
+        "itemBahanBaku": { "type": "string", "maxLength": 200 },
+        "satuan": { "type": "string", "maxLength": 50 },
+        "qtyWaste": { "type": "number" },
+        "hargaUnit": { "type": "number" },
+        "nilaiWaste": { "type": "number" },
+        "penyebab": { "type": "string", "maxLength": 100 },
+        "tindakanKoreksi": { "type": "string", "maxLength": 500 },
+        "pic": { "type": "string", "maxLength": 100 },
+        "status": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": [
+        "tanggal",
+        "periode",
+        "outlet",
+        "kategori",
+        "itemBahanBaku",
+        "satuan",
+        "qtyWaste",
+        "hargaUnit",
+        "nilaiWaste",
+        "penyebab",
+        "pic",
+        "status"
+      ]
+    }
+  },
+  "firestore": {
+    "/monthly_reports/{reportId}": {
+      "schema": "MonthlyReport",
+      "description": "Collection of monthly outlet financial and COGS reports"
+    },
+    "/category_analysis/{analysisId}": {
+      "schema": "CategoryAnalysis",
+      "description": "Collection of category breakdown reports"
+    },
+    "/waste_logs/{wasteId}": {
+      "schema": "WasteLog",
+      "description": "Collection of raw material waste log incidents"
+    }
+  }
+}
